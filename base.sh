@@ -31,3 +31,9 @@ systemctl enable fstrim.timer
 systemctl enable libvirtd
 systemctl enable firewalld
 systemctl enable acpid
+
+useradd -m pacadmin
+echo pacadmin:password | chpasswd
+usermod -aG libvirt pacadmin
+
+echo "pacadmin ALL=(ALL) ALL" >> /etc/sudoers.d/pacadmin
